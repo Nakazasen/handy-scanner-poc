@@ -1,26 +1,22 @@
 {
-  "updated_at": "2026-03-14T23:00:00Z",
+  "updated_at": "2026-03-14T23:08:00Z",
   "working_on": {
-    "feature": "Industrial Barcode Support",
-    "task": "Fix scanning failure for IMEI/SN codes",
+    "feature": "Industrial 2D Support",
+    "task": "Fix scanning failure for Data Matrix codes",
     "status": "completed",
-    "version": "1.0.2"
+    "version": "1.0.3"
   },
   "recent_changes": [
     {
-      "type": "fix",
-      "description": "Upgrade to 1080p and add Code 128/UPC support",
-      "impact": "Can now read high-density SN/IMEI barcodes"
+      "type": "feat",
+      "description": "Add support for Data Matrix, PDF417, and Aztec",
+      "impact": "Can now read electronic component labels (Data Matrix)"
     }
   ],
   "decisions_made": [
     {
-      "decision": "Upgrade from 720p to 1080p",
-      "reason": "720p resolution not sharp enough for dense 1D barcode lines"
-    },
-    {
-      "decision": "Enable all industrial 1D formats",
-      "reason": "Common industrial labels use Code 128/ITF instead of just Code 39"
+      "decision": "Add Data Matrix to ML Kit options",
+      "reason": "Industrial parts often use Data Matrix instead of QR/Barcode"
     }
   ]
 }

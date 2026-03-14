@@ -2,14 +2,13 @@
 📋 HANDOVER DOCUMENT - PROJECTS: Handy Scanner PoC
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📍 Đang làm: Đã hoàn thành xử lý lỗi quét mã vạch mật độ cao (IMEI/SN) - Phiên bản V1.0.2.
-🔢 Đến bước: Chờ phản hồi kiểm thử thực địa từ người dùng với bản build 1080p.
+📍 Đang làm: Đã hoàn thành hỗ trợ mã 2D công nghiệp (Data Matrix) - Phiên bản V1.0.3.
+🔢 Đến bước: Chờ phản hồi tổng thể về khả năng quét đa năng (1D & 2D).
 
 ✅ ĐÃ XONG:
-   - Phase 01-06: Khởi tạo và build app cơ bản.
-   - Phase 07: Debug & Fix lỗi không quét được mã vạch IMEI (V1.0.1 & V1.0.2).
-   - Nâng cấp độ phân giải camera lên 1080p.
-   - Tối ưu lấy nét và mở rộng định dạng mã (Code 128, EAN, UPC).
+   - Phase 01-07: Setup và Fix lỗi IMEI/SN (1080p).
+   - Phase 08: Kích hoạt Data Matrix, PDF417, Aztec cho linh kiện điện tử.
+   - Toàn bộ flow nhận diện mã vạch công nghiệp đã được tối ưu.
 
 ⏳ CÒN LẠI:
    - Kiểm tra hiệu năng thực tế trên thiết bị Handy Terminal chuyên dụng.

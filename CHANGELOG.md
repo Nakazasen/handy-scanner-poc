@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.3] - 2026-03-14
+### Added
+- Hỗ trợ mã vạch 2D công nghiệp: **Data Matrix**, **PDF417**, **Aztec**.
+- Cho phép nhận diện các tem nhãn linh kiện điện tử siêu nhỏ.
+
+### Changed
+- Cập nhật thư viện ML Kit Options để quét đồng thời cả mã vạch vạch (1D) và mã khối (2D Industrial).
+
 ## [1.0.0] - 2026-03-14
 ### Added
 - Khởi tạo dự án Android Mobile (Kotlin) cho thiết bị Handy Terminal.
