@@ -10,6 +10,7 @@ import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import android.util.Size
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
@@ -40,8 +41,12 @@ class MainActivity : AppCompatActivity() {
         // Cấu hình ML Kit: CHỈ quét CODE 39 và QR CODE để tối đa hóa tốc độ
         val options = BarcodeScannerOptions.Builder()
             .setBarcodeFormats(
+                Barcode.FORMAT_QR_CODE,
                 Barcode.FORMAT_CODE_39,
-                Barcode.FORMAT_QR_CODE
+                Barcode.FORMAT_CODE_128,
+                Barcode.FORMAT_EAN_13,
+                Barcode.FORMAT_EAN_8,
+                Barcode.FORMAT_ITF
             )
             .build()
         barcodeScanner = BarcodeScanning.getClient(options)
@@ -70,6 +75,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
             val imageAnalyzer = ImageAnalysis.Builder()
+                .setTargetResolution(Size(1280, 720))
                 .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
                 .build()
                 .also {
@@ -139,9 +145,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun getFormatName(format: Int): String {
         return when (format) {
-            Barcode.FORMAT_CODE_39 -> "FORMAT_CODE_39"
             Barcode.FORMAT_QR_CODE -> "QR_CODE"
-            else -> "UNKNOWN_FORMAT"
+            Barcode.FORMAT_CODE_39 -> "CODE_39"
+            Barcode.FORMAT_CODE_128 -> "CODE_128"
+            Barcode.FORMAT_EAN_13 -> "EAN_13"
+            Barcode.FORMAT_EAN_8 -> "EAN_8"
+            Barcode.FORMAT_ITF -> "ITF"
+            else -> "FORMAT_$format"
         }
     }
 
