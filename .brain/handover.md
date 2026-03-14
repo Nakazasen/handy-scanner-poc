@@ -2,33 +2,32 @@
 📋 HANDOVER DOCUMENT - PROJECTS: Handy Scanner PoC
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📍 Đang làm: Đã hoàn thành giai đoạn Demo PoC (Phases 01-06)
-🔢 Đến bước: Dự án đã sẵn sàng để trình diễn và kiểm thử thực địa.
+📍 Đang làm: Đã hoàn thành xử lý lỗi quét mã vạch mật độ cao (IMEI/SN) - Phiên bản V1.0.2.
+🔢 Đến bước: Chờ phản hồi kiểm thử thực địa từ người dùng với bản build 1080p.
 
 ✅ ĐÃ XONG:
-   - Toàn bộ cấu trúc thư mục Android Project chuẩn.
-   - Logic quét mã siêu tốc (Code 39 & QR) bằng ML Kit.
-   - Luồng Auto-build APK qua GitHub Actions thành công.
-   - Tài liệu hướng dẫn sử dụng (walkthrough.md).
+   - Phase 01-06: Khởi tạo và build app cơ bản.
+   - Phase 07: Debug & Fix lỗi không quét được mã vạch IMEI (V1.0.1 & V1.0.2).
+   - Nâng cấp độ phân giải camera lên 1080p.
+   - Tối ưu lấy nét và mở rộng định dạng mã (Code 128, EAN, UPC).
 
 ⏳ CÒN LẠI:
-   - Nhận phản hồi từ đối tác sau buổi demo.
-   - (Optional) Tính năng xuất lịch sử quét ra file CSV/Excel.
-   - (Optional) Kết nối API truyền dữ liệu realtime lên Server ERP/EDI.
+   - Kiểm tra hiệu năng thực tế trên thiết bị Handy Terminal chuyên dụng.
+   - (Tương lai) Tích hợp gửi dữ liệu lên Server qua API.
 
 🔧 QUYẾT ĐỊNH QUAN TRỌNG:
-   - Dùng Gradle 8.2 & JDK 17 (Cố định để tránh GitHub Runner tự dùng version quá mới gây lỗi).
-   - Chỉ quét 2 định dạng (QR, Code 39) để đạt hiệu năng tối đa trên thiết bị Handy Terminal.
-   - Delay 1.5s giữa các lần quét để tránh lặp âm thanh và dữ liệu.
+   - **Mã vạch công nghiệp (IMEI)**: Bắt buộc dùng 1080p vì 720p bị mờ các vạch mảnh.
+   - **ML Kit Options**: Bật full định dạng 1D để tránh sót mã.
+   - **UI**: Giữ đường vạch đỏ tĩnh để người dùng dễ căn chỉnh tâm mã vạch.
 
 ⚠️ LƯU Ý CHO SESSION SAU:
-   - Repository GitHub: https://github.com/Nakazasen/handy-scanner-poc
-   - Luôn kiểm tra tab `Actions` trên GitHub sau khi push code mới.
+   - Luôn dùng file `MainActivity.kt` hiện tại làm gốc vì đã tối ưu Focus và Resolution.
+   - Nếu máy Handy Terminal đời cũ yếu, có thể phải cân nhắc hạ xuống 720p và dùng thuật toán làm nét ảnh thủ công.
 
 📁 FILES QUAN TRỌNG:
-   - `app/src/main/java/com/example/handyscanner/MainActivity.kt` (Core Logic)
-   - `.github/workflows/build.yml` (CI/CD Configuration)
-   - `.brain/task.md` (Project Tracker)
+   - `app/src/main/java/com/example/handyscanner/MainActivity.kt` (Scanner Logic)
+   - `.brain/brain.json` (Project Knowledge Base)
+   - `.brain/session.json` (Current Progress)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📍 Đã lưu kiến thức dự án! Để tiếp tục: Gõ /recap

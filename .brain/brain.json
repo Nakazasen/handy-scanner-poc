@@ -1,23 +1,26 @@
 {
   "project": {
     "name": "Quetma1D_2D_Smartphone",
-    "description": "Ứng dụng Android quét siêu tốc mã QR (2D) và CODE 39 (1D) sử dụng Google ML Kit Barcode Scanning.",
-    "created_at": "2026-03-14T18:49:04+07:00"
+    "description": "Ứng dụng Android quét siêu tốc mã QR (2D) và Barcode công nghiệp mật độ cao (1D) sử dụng Google ML Kit.",
+    "created_at": "2026-03-14T18:49:04+07:00",
+    "version": "1.0.2"
   },
   "tech_stack": [
     "Android Native (Kotlin)",
-    "CameraX API",
+    "CameraX API (Full HD 1080p)",
     "Google ML Kit Barcode Scanning",
     "GitHub Actions (CI/CD)"
   ],
   "features": [
-    "Quét siêu tốc mã QR và Code 39",
+    "Quét siêu tốc mã QR, Code 39, Code 128, EAN, UPC, ITF",
+    "Hỗ trợ mã vạch IMEI/SN mật độ cao",
     "Âm thanh phản hồi (Beep)",
-    "Giao diện Full Screen Preview",
-    "Build APK tự động qua GitHub Actions"
+    "Giao diện Viewer với guide line đỏ (Viewfinder)",
+    "Tối ưu hóa lấy nét tự động liên tục"
   ],
   "decisions": [
     "Sử dụng Gradle 8.2 để tương thích ML Kit trên CI",
-    "Lọc Barcode Format chỉ lấy QR và Code 39 để tối ưu CPU"
+    "Nâng độ phân giải ImageAnalysis lên 1080p để giải mã các vạch siêu mảnh",
+    "Mở rộng bộ lọc Format để bao quát toàn bộ mã vạch công nghiệp phổ biến"
   ]
 }
