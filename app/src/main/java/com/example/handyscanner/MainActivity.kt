@@ -38,7 +38,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Cấu hình ML Kit: CHỈ quét CODE 39 và QR CODE để tối đa hóa tốc độ
         val options = BarcodeScannerOptions.Builder()
             .setBarcodeFormats(
                 Barcode.FORMAT_QR_CODE,
@@ -46,7 +45,9 @@ class MainActivity : AppCompatActivity() {
                 Barcode.FORMAT_CODE_128,
                 Barcode.FORMAT_EAN_13,
                 Barcode.FORMAT_EAN_8,
-                Barcode.FORMAT_ITF
+                Barcode.FORMAT_ITF,
+                Barcode.FORMAT_UPC_A,
+                Barcode.FORMAT_UPC_E
             )
             .build()
         barcodeScanner = BarcodeScanning.getClient(options)
@@ -75,7 +76,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
             val imageAnalyzer = ImageAnalysis.Builder()
-                .setTargetResolution(Size(1280, 720))
+                .setTargetResolution(Size(1920, 1080))
                 .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
                 .build()
                 .also {
@@ -151,6 +152,8 @@ class MainActivity : AppCompatActivity() {
             Barcode.FORMAT_EAN_13 -> "EAN_13"
             Barcode.FORMAT_EAN_8 -> "EAN_8"
             Barcode.FORMAT_ITF -> "ITF"
+            Barcode.FORMAT_UPC_A -> "UPC_A"
+            Barcode.FORMAT_UPC_E -> "UPC_E"
             else -> "FORMAT_$format"
         }
     }
