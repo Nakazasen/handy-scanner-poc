@@ -47,7 +47,10 @@ class MainActivity : AppCompatActivity() {
                 Barcode.FORMAT_EAN_8,
                 Barcode.FORMAT_ITF,
                 Barcode.FORMAT_UPC_A,
-                Barcode.FORMAT_UPC_E
+                Barcode.FORMAT_UPC_E,
+                Barcode.FORMAT_DATA_MATRIX,
+                Barcode.FORMAT_PDF417,
+                Barcode.FORMAT_AZTEC
             )
             .build()
         barcodeScanner = BarcodeScanning.getClient(options)
@@ -154,6 +157,9 @@ class MainActivity : AppCompatActivity() {
             Barcode.FORMAT_ITF -> "ITF"
             Barcode.FORMAT_UPC_A -> "UPC_A"
             Barcode.FORMAT_UPC_E -> "UPC_E"
+            Barcode.FORMAT_DATA_MATRIX -> "DATA_MATRIX"
+            Barcode.FORMAT_PDF417 -> "PDF417"
+            Barcode.FORMAT_AZTEC -> "AZTEC"
             else -> "FORMAT_$format"
         }
     }
