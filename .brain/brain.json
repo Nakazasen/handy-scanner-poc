@@ -1,0 +1,10 @@
+{
+  "project": {
+    "name": "Quetma1D_2D_Smartphone",
+    "description": "Ứng dụng Android quét siêu tốc mã QR (2D) và CODE 39 (1D) sử dụng Google ML Kit Barcode Scanning.",
+    "created_at": "2026-03-14T18:49:04+07:00"
+  },
+  "tech_stack": [],
+  "features": [],
+  "decisions": []
+}
