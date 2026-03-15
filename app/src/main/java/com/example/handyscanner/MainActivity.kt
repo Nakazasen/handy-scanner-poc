@@ -9,6 +9,7 @@ import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
 import android.view.View
+import android.util.Log
 import android.widget.PopupMenu
 import java.util.Locale
 import android.content.res.Configuration
