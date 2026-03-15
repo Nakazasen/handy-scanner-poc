@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Handy Scanner</string>
+    <string name="btn_confirm_clear">提交 (清除)</string>
+    <string name="hint_scan_result">扫描结果...</string>
+    <string name="hint_waiting">等待扫描...</string>
+    <string name="label_format">格式:</string>
+    <string name="status_ready">就绪</string>
+</resources>

@@ -28,6 +28,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Nút chọn ngôn ngữ (Globe) -->
+    <ImageButton
+        android:id="@+id/btnLanguage"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_language"
+        android:padding="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
+
     <!-- Khung điều khiển phía dưới -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
@@ -57,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:background="@drawable/edit_text_background"
-            android:hint="Kết quả quét..."
+            android:hint="@string/hint_scan_result"
             android:padding="12dp"
             android:textColor="@color/scan_success"
             android:textSize="18sp"
@@ -88,7 +101,7 @@
             android:layout_height="60dp"
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/white"
-            android:text="XÁC NHẬN (CLEAR)"
+            android:text="@string/btn_confirm_clear"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"

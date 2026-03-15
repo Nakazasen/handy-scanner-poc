@@ -7,8 +7,11 @@ import android.media.ToneGenerator
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.widget.Toast
+import android.view.View
+import android.widget.PopupMenu
+import java.util.Locale
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Size
 import androidx.camera.core.*
@@ -61,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         binding.btnScanTrigger.setOnClickListener {
             if (!isScanning) {
                 isScanning = true
-                binding.etResult.hint = "Đang chờ mã..."
+                binding.etResult.hint = getString(R.string.hint_waiting)
                 binding.btnScanTrigger.alpha = 0.5f // Hiệu ứng đang quét
             }
         }
@@ -69,10 +72,15 @@ class MainActivity : AppCompatActivity() {
         // Nút Xóa kết quả (Clear)
         binding.btnClear.setOnClickListener {
             binding.etResult.text.clear()
-            binding.tvFormat.text = "Sẵn sàng"
-            binding.etResult.hint = "Kết quả quét..."
+            binding.tvFormat.text = getString(R.string.status_ready)
+            binding.etResult.hint = getString(R.string.hint_scan_result)
             isScanning = false // Đảm bảo dừng quét nếu đang quét dở
             binding.btnScanTrigger.alpha = 1.0f
+        }
+
+        // Nút chọn ngôn ngữ
+        binding.btnLanguage.setOnClickListener { view ->
+            showLanguageMenu(view)
         }
 
         if (allPermissionsGranted()) {
@@ -147,7 +155,8 @@ class MainActivity : AppCompatActivity() {
                         // Cập nhật UI trên Main Thread
                         runOnUiThread {
                             binding.etResult.setText(rawValue)
-                            binding.tvFormat.text = "Format: $formatName"
+                            val labelFormat = getString(R.string.label_format)
+                            binding.tvFormat.text = "$labelFormat $formatName"
                             binding.btnScanTrigger.alpha = 1.0f
                         }
                     }
@@ -198,6 +207,38 @@ class MainActivity : AppCompatActivity() {
                 finish()
             }
         }
+    }
+
+    private fun showLanguageMenu(view: View) {
+        val popup = PopupMenu(this, view)
+        popup.menu.add(0, 0, 0, "Tiếng Việt")
+        popup.menu.add(0, 1, 1, "日本語 (Japanese)")
+        popup.menu.add(0, 2, 2, "中文 (Chinese)")
+        popup.menu.add(0, 3, 3, "English")
+
+        popup.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                0 -> setAppLocale("vi")
+                1 -> setAppLocale("ja")
+                2 -> setAppLocale("zh")
+                3 -> setAppLocale("en")
+            }
+            true
+        }
+        popup.show()
+    }
+
+    private fun setAppLocale(languageCode: String) {
+        val locale = Locale(languageCode)
+        Locale.setDefault(locale)
+        val config = Configuration(resources.configuration)
+        config.setLocale(locale)
+        
+        // Update resources for current context
+        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
+        
+        // Cần recreate để cập nhật toàn bộ Resource (Strings, Layout)
+        recreate()
     }
 
     override fun onDestroy() {

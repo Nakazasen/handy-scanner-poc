@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.5] - 2026-03-15
+### Added
+- **Đa ngôn ngữ (Localization)**: Hỗ trợ 4 ngôn ngữ: Tiếng Việt, Tiếng Nhật, Tiếng Trung và Tiếng Anh.
+- **Tính năng Live Switch**: Chuyển đổi ngôn ngữ trực tiếp thông qua nút biểu tượng Quả cầu mà không cần restart app.
+- Chuẩn hóa thuật ngữ công nghiệp cho Tiếng Nhật (`提出`) và Tiếng Trung (`提交`).
+
 ## [1.0.4] - 2026-03-15
 ### Added
 - **Chế độ Quét chủ động**: Thiết kế lại luồng hoạt động mô phỏng máy scan cầm tay.

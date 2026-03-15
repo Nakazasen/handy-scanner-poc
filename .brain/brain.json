@@ -1,26 +1,27 @@
 {
   "project": {
     "name": "Quetma1D_2D_Smartphone",
-    "description": "Ứng dụng Android quét siêu tốc mã QR, Data Matrix (2D) và Barcode công nghiệp (1D) với chế độ Quét chủ động (Bấm -> Quét -> Xác nhận).",
+    "description": "Ứng dụng Android quét siêu tốc mã QR, Data Matrix (2D) và Barcode công nghiệp (1D) với chế độ Quét chủ động và hỗ trợ đa ngôn ngữ (VN, JP, CN, EN).",
     "created_at": "2026-03-14T18:49:04+07:00",
-    "version": "1.0.4"
+    "version": "1.0.5"
   },
   "tech_stack": [
     "Android Native (Kotlin)",
     "CameraX API (Full HD 1080p)",
     "Google ML Kit Barcode Scanning",
-    "GitHub Actions (CI/CD)"
+    "GitHub Actions (CI/CD)",
+    "Localization (Multi-language Support)"
   ],
   "features": [
     "Chế độ Quét chủ động: Manual Trigger (Nút Scan) và Reset (Nút Xác nhận/Clear)",
     "Hỗ trợ mã QR, Data Matrix, PDF417, Aztec, Code 39, Code 128, EAN, UPC, ITF",
+    "Đa ngôn ngữ: Việt, Nhật, Trung, Anh với tính năng chuyển đổi trực tiếp (Live Switch)",
     "Hỗ trợ mã vạch IMEI/SN mật độ cao",
-    "Âm thanh phản hồi (Beep) và Giao diện hướng dẫn Viewfinder",
-    "Tối ưu hóa lấy nét tự động liên tục"
+    "Âm thanh phản hồi (Beep) và Giao diện hướng dẫn Viewfinder"
   ],
   "decisions": [
     "Sử dụng Gradle 8.2 để tương thích ML Kit trên CI",
-    "Nâng độ phân giải ImageAnalysis lên 1080p để giải mã các vạch siêu mảnh",
-    "Mở rộng bộ lọc Format để bao quát toàn bộ mã vạch công nghiệp phổ biến"
+    "Triển khai Live Locale Switch bằng recreate() để cập nhật Resource tức thì",
+    "Sử dụng PopupMenu cho việc chọn ngôn ngữ để tối ưu hóa diện tích UI"
   ]
 }

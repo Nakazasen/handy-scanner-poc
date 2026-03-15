@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Handy Scanner</string>
+    <string name="btn_confirm_clear">提出 (クリア)</string>
+    <string name="hint_scan_result">スキャン結果...</string>
+    <string name="hint_waiting">スキャン中...</string>
+    <string name="label_format">フォーマット:</string>
+    <string name="status_ready">準備完了</string>
+</resources>
