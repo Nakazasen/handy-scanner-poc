@@ -28,36 +28,75 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Banner kết quả -->
-    <LinearLayout
+    <!-- Khung điều khiển phía dưới -->
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:background="@color/overlay_dark"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- Label định dạng mã -->
         <TextView
             android:id="@+id/tvFormat"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
+            android:textSize="14sp"
+            android:alpha="0.7"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Format: DATA_MATRIX" />
+
+        <!-- Ô nhập liệu Textbox -->
+        <EditText
+            android:id="@+id/etResult"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Kết quả quét..."
+            android:padding="12dp"
+            android:textColor="@color/scan_success"
             android:textSize="18sp"
             android:textStyle="bold"
-            tools:text="Format: FORMAT_CODE_39" />
+            android:focusable="true"
+            android:clickable="true"
+            app:layout_constraintTop_toBottomOf="@id/tvFormat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnScanTrigger" />
 
-        <TextView
-            android:id="@+id/tvData"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textColor="@color/scan_success"
-            android:textSize="22sp"
+        <!-- Nút kích hoạt Scan (Icon) -->
+        <ImageButton
+            android:id="@+id/btnScanTrigger"
+            android:layout_width="56dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/button_scan_background"
+            android:src="@android:drawable/ic_menu_camera"
+            app:tint="@color/white"
+            app:layout_constraintTop_toTopOf="@id/etResult"
+            app:layout_constraintBottom_toBottomOf="@id/etResult"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Nút Xác nhận (Clear) -->
+        <Button
+            android:id="@+id/btnClear"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/white"
+            android:text="XÁC NHẬN (CLEAR)"
+            android:textColor="@color/black"
+            android:textSize="18sp"
             android:textStyle="bold"
-            tools:text="Data: 1234567890ABC" />
+            app:layout_constraintTop_toBottomOf="@id/etResult"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

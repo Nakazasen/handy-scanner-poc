@@ -1,9 +1,9 @@
 {
   "project": {
     "name": "Quetma1D_2D_Smartphone",
-    "description": "Ứng dụng Android quét siêu tốc mã QR, Data Matrix (2D) và Barcode công nghiệp mật độ cao (1D) sử dụng Google ML Kit.",
+    "description": "Ứng dụng Android quét siêu tốc mã QR, Data Matrix (2D) và Barcode công nghiệp (1D) với chế độ Quét chủ động (Bấm -> Quét -> Xác nhận).",
     "created_at": "2026-03-14T18:49:04+07:00",
-    "version": "1.0.3"
+    "version": "1.0.4"
   },
   "tech_stack": [
     "Android Native (Kotlin)",
@@ -12,10 +12,10 @@
     "GitHub Actions (CI/CD)"
   ],
   "features": [
-    "Quét siêu tốc mã QR, Data Matrix, PDF417, Aztec, Code 39, Code 128, EAN, UPC, ITF",
+    "Chế độ Quét chủ động: Manual Trigger (Nút Scan) và Reset (Nút Xác nhận/Clear)",
+    "Hỗ trợ mã QR, Data Matrix, PDF417, Aztec, Code 39, Code 128, EAN, UPC, ITF",
     "Hỗ trợ mã vạch IMEI/SN mật độ cao",
-    "Âm thanh phản hồi (Beep)",
-    "Giao diện Viewer với guide line đỏ (Viewfinder)",
+    "Âm thanh phản hồi (Beep) và Giao diện hướng dẫn Viewfinder",
     "Tối ưu hóa lấy nét tự động liên tục"
   ],
   "decisions": [

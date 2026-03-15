@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var barcodeScanner: BarcodeScanner
 
     private val toneGenerator = ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100)
-    private var isScanning = true
+    private var isScanning = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +56,24 @@ class MainActivity : AppCompatActivity() {
         barcodeScanner = BarcodeScanning.getClient(options)
 
         cameraExecutor = Executors.newSingleThreadExecutor()
+
+        // Nút kích hoạt quét
+        binding.btnScanTrigger.setOnClickListener {
+            if (!isScanning) {
+                isScanning = true
+                binding.etResult.hint = "Đang chờ mã..."
+                binding.btnScanTrigger.alpha = 0.5f // Hiệu ứng đang quét
+            }
+        }
+
+        // Nút Xóa kết quả (Clear)
+        binding.btnClear.setOnClickListener {
+            binding.etResult.text.clear()
+            binding.tvFormat.text = "Sẵn sàng"
+            binding.etResult.hint = "Kết quả quét..."
+            isScanning = false // Đảm bảo dừng quét nếu đang quét dở
+            binding.btnScanTrigger.alpha = 1.0f
+        }
 
         if (allPermissionsGranted()) {
             startCamera()
@@ -120,20 +138,18 @@ class MainActivity : AppCompatActivity() {
                         val rawValue = barcode.rawValue
                         val formatName = getFormatName(barcode.format)
                         
-                        // Tạm ngưng quét để tránh spam
+                        // Dừng quét ngay khi có kết quả
                         isScanning = false
 
                         // Phát tiếng Bíp
                         toneGenerator.startTone(ToneGenerator.TONE_PROP_BEEP)
 
-                        // Cập nhật UI
-                        binding.tvData.text = "Data: $rawValue"
-                        binding.tvFormat.text = "Format: $formatName"
-
-                        // Resume quét sau 1.5 giây
-                        Handler(Looper.getMainLooper()).postDelayed({
-                            isScanning = true
-                        }, 1500)
+                        // Cập nhật UI trên Main Thread
+                        runOnUiThread {
+                            binding.etResult.setText(rawValue)
+                            binding.tvFormat.text = "Format: $formatName"
+                            binding.btnScanTrigger.alpha = 1.0f
+                        }
                     }
                 }
                 .addOnFailureListener {

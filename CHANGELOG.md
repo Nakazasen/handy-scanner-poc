@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.0.4] - 2026-03-15
+### Added
+- **Chế độ Quét chủ động**: Thiết kế lại luồng hoạt động mô phỏng máy scan cầm tay.
+- Giao diện mới: Thêm ô nhập liệu (**Textbox**), nút **Scan** nhỏ bên cạnh và nút **Xác nhận (Clear)** lớn.
+- **App Icon**: Cập nhật logo ứng dụng chuyên nghiệp hơn.
+
+### Changed
+- Thay đổi logic quét: Chỉ kích hoạt Camera Scanning khi nhấn nút.
+- Tự động dừng quét sau khi nhận diện thành công để người dùng kiểm tra dữ liệu.
+
 ## [1.0.3] - 2026-03-14
 ### Added
 - Hỗ trợ mã vạch 2D công nghiệp: **Data Matrix**, **PDF417**, **Aztec**.

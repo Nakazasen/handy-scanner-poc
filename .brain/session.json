@@ -1,22 +1,27 @@
 {
-  "updated_at": "2026-03-14T23:08:00Z",
+  "updated_at": "2026-03-15T11:00:00Z",
   "working_on": {
-    "feature": "Industrial 2D Support",
-    "task": "Fix scanning failure for Data Matrix codes",
+    "feature": "Active Scanning Flow",
+    "task": "Implement manual trigger and clear layout",
     "status": "completed",
-    "version": "1.0.3"
+    "version": "1.0.4"
   },
   "recent_changes": [
     {
       "type": "feat",
-      "description": "Add support for Data Matrix, PDF417, and Aztec",
-      "impact": "Can now read electronic component labels (Data Matrix)"
+      "description": "Add manual scan trigger button and clear button",
+      "impact": "Better control over high-speed scanning"
+    },
+    {
+      "type": "ui",
+      "description": "Add professional app icon",
+      "impact": "Polished application appearance"
     }
   ],
   "decisions_made": [
     {
-      "decision": "Add Data Matrix to ML Kit options",
-      "reason": "Industrial parts often use Data Matrix instead of QR/Barcode"
+      "decision": "Use Manual Trigger instead of Auto Scanning",
+      "reason": "Prevents accidental scans and mimics industrial scanner behavior"
     }
   ]
 }
