@@ -5,3 +5,8 @@
 ## Status: ✅ Version 1.0.3 (Production Ready)
 
 Dự án đã hoàn thành các tính năng cốt lõi và hỗ trợ đầy đủ các định dạng mã vạch công nghiệp.
+
+## 📄 License
+
+Copyright © 2026 Nakazasen. All rights reserved. 
+Sử dụng mã nguồn này cho mục đích thương mại hoặc sao chép mà không có sự cho phép là vi phạm bản quyền.
