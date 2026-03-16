@@ -7,6 +7,7 @@ import android.media.ToneGenerator
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.content.Intent
 import android.widget.Toast
 import android.view.View
 import android.util.Log
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
 
     private val toneGenerator = ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100)
     private var isScanning = false
+    private var isServiceMode = false // true nếu được gọi qua Intent "SCAN"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,6 +88,14 @@ class MainActivity : AppCompatActivity() {
 
         if (allPermissionsGranted()) {
             startCamera()
+            
+            // Tự động kích hoạt quét nếu được gọi từ App khác (Intent SCAN)
+            if (intent?.action == "com.example.handyscanner.SCAN") {
+                isServiceMode = true
+                isScanning = true
+                binding.etResult.hint = getString(R.string.hint_waiting)
+                binding.btnScanTrigger.alpha = 0.5f
+            }
         } else {
             ActivityCompat.requestPermissions(
                 this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
@@ -159,6 +169,16 @@ class MainActivity : AppCompatActivity() {
                             val labelFormat = getString(R.string.label_format)
                             binding.tvFormat.text = "$labelFormat $formatName"
                             binding.btnScanTrigger.alpha = 1.0f
+
+                            // Nếu đang ở chế độ Service, trả kết quả và đóng ứng dụng
+                            if (isServiceMode) {
+                                val resultIntent = Intent().apply {
+                                    putExtra("SCAN_RESULT", rawValue)
+                                    putExtra("SCAN_FORMAT", formatName)
+                                }
+                                setResult(RESULT_OK, resultIntent)
+                                finish()
+                            }
                         }
                     }
                 }
