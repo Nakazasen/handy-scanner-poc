@@ -1,7 +1,7 @@
 name: Build Android APK
 on:
   push:
-    branches: [ "main", "master" ]
+    branches: [ "main", "master", "feature/app-to-app-integration" ]
   workflow_dispatch:
 
 jobs:
